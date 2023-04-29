@@ -1,0 +1,57 @@
+1. Block: 
+Group of multiple statements combined together (compound statement) and used where js expects single statement.
+
+2. Blockscope:
+What all variables and functions we can access inside the block
+let and const are blockscoped. But if you declare let and const outside block it will go to script (similar to block)
+
+3. Scope: 
+
+
+4. Lexical scope:
+
+
+5. Dynamic scope:
+
+
+Closure def:  
+A function along with its lexical scope is called Closure. It gives you access 
+to outer function scope from an inner function
+
+
+
+Block: Group of multiple statements are combined/ compound statement and used where js expects single statement
+Blockscrope: What all variables nd functions we can access inside the block
+let and const are blockscoped. But if you declare let and const outside block it will go to script (similar to block)
+Shadowing
+Illegal shadowing - shadowing let using var
+
+
+
+
+
+
+
+Currying
+
+https://javascript.info/operators
+10
+-1
+1
+2
+6
+9px
+$45
+Nan
+ -9 5
+-14
+1
+Nan
+  -2
+
+true
+false
+true
+false
+false
+false

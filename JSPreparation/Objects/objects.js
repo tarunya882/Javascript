@@ -1,4 +1,84 @@
 //Objects in Js
+
+const { string, func } = require("prop-types")
+
+/**
+ * Structured clone circular ref
+ * Eg1:
+ */
+
+  let user = {};
+     // let's create a circular reference:
+   // user.me references the user itself
+  user.me = user;
+                    
+  let clone = structuredClone(user);
+  alert(clone.me === clone); // true
+
+ //Eg2:  user has a reference to the object
+ /**
+  *   If the value of user is overwritten, the reference is lost:
+  */
+  let user = {
+    name: "John"
+  };
+  eg: user = null;
+
+  
+  /**
+   * Eg3:  Being referenced is not the same as being reachable (from a root): 
+   * a pack of interlinked objects can become unreachable as a whole.
+   */
+  function marry(man, woman) {
+    woman.husband = man;
+    man.wife = woman;
+  
+    return {
+      father: man,
+      mother: woman
+    }
+  }
+  
+  let family = marry({
+    name: "John"
+  }, {
+    name: "Ann"
+  });
+//mark and sweep algorithm
+
+/**
+ * Eg4: Is it possible to create functions A and B so that new A() == new B()?
+ */
+function A() { ... }
+function B() { ... }
+
+let a = new A();
+let b = new B();
+
+alert( a == b ); // true
+
+
+soltn:
+let obj = {};
+
+function A() { return obj; }
+function B() { return obj; }
+
+alert( new A() == new B() ); // true
+
+
+// OBJECT ASSIGNING:
+let user = { name: "John" };
+let permissions1 = { canView: true };
+let permissions2 = { canEdit: true };
+// copies all properties from permissions1 and permissions2 into user
+Object.assign(user, permissions1, permissions2);
+// now user = { name: "John", canView: true, canEdit: true }
+alert(user.name); // John
+alert(user.canView); // true
+alert(user.canEdit); // true
+
+
 //Ques1:
  const obj = {
     a: "one",
@@ -63,8 +143,8 @@ console.log(shape.perimeter()); //Nan because this in perimeter refers to window
 
 //this differs for normal function and arrow function
 
-//Ques7: Destructuring-taking out specific properties from obj
 
+//Ques7: Destructuring-taking out specific properties from obj
 // this code throws error identifier name has already been declared
 const name='tarunya';
 const {name} = settings;
@@ -126,7 +206,7 @@ console.log(members); //[name:"tarunya"] //bcz we are changing complete person
 let person = {name:"tarunya"};
 const members = [person];
 person.name=null;
-console.log(members); //[name:null] // we are onl chging its properties
+console.log(members); //[name:null] // we are only changing its properties
 
 //Ques12:
 const value = {number: 10};
@@ -177,11 +257,29 @@ let user = {
     age:24,
 }
 //how to clone obj:
-1. const objClone = Object.assign({}, user);
+// 1. 
+const objClone = Object.assign({}, user);
 objClone.name="piyush";
 console.log(objClone, user); // {name:piyush,age:24} y, {name:"Tarunya",age:24}
 
-2. const objClone = JSON.parse(JSON.stringify(user));
+// 2. 
+const objClone = JSON.parse(JSON.stringify(user));
 objClone.name = 'Piyush';
 
-2. const objClone = {...user};
+// 3. 
+const objClone = {...user};
+
+
+/**
+ * Ques14:
+ */
+const func = (function(a) {
+  delete a;
+  return A;
+},(5));
+
+console.log(func);
+
+/**
+ * o/p - returns 5 because delete works only for object properties here a is a variable not object
+ */

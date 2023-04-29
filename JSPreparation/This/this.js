@@ -16,7 +16,7 @@ let user = {
 user.childObj.getDetails();
 
 
-this in arrow function comes from its parent function
+// this in arrow function comes from its parent function
 let user = {
     name:"tarunya",
     age: 24,
@@ -193,3 +193,4 @@ const calc = {
         return this;
     }
 }
+

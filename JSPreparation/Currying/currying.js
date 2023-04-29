@@ -94,3 +94,4 @@ totalSum(1)(6)(5)(6);
 curry(sum)(1)(6)(5)(6); //doubt 
 
 // important links - https://roadsidecoder.hashnode.dev/javascript-interview-questions-currying-output-based-questions-partial-application-and-more#comments-list //last problem
+// https://mostly-adequate.gitbook.io/mostly-adequate-guide/ch04
